@@ -1,7 +1,12 @@
 package br.com.curso.biblioteca.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "TB_EXEMPLAR_LIVRO")
 public class Livro extends ObraFisica {
 
     private String autor;

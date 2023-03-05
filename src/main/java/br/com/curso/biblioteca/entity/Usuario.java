@@ -1,5 +1,10 @@
 package br.com.curso.biblioteca.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "TB_USUARIO")
 public class Usuario {
 
     protected Long id;

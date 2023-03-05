@@ -1,7 +1,11 @@
 package br.com.curso.biblioteca.entity;
 
-public class Professor extends Usuario {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "TB_PROFESSOR")
+public class Professor extends Usuario {
     private String titulacao;
 
     Professor() {
