@@ -1,5 +1,6 @@
 package br.com.curso.biblioteca.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 @Table(name = "TB_EXEMPLAR_REVISTTA")
 public class Revista extends ObraFisica {
 
+    @Column( nullable = false)
     private Integer numero;
 
 

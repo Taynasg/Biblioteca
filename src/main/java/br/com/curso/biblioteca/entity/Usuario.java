@@ -1,16 +1,28 @@
 package br.com.curso.biblioteca.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "TB_USUARIO")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column( nullable = false)
     protected Long id;
+    @Column( nullable = false)
     protected String nome;
+    @Column( nullable = false)
     protected String rg;
+    @Column( nullable = false)
     protected String email;
+
+    @OneToMany(mappedBy = "usuario")
+    protected List<Emprestimo> emprestimos;
 
     public Usuario(){
 

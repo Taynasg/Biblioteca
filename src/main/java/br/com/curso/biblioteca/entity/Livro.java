@@ -1,16 +1,18 @@
 package br.com.curso.biblioteca.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "TB_EXEMPLAR_LIVRO")
+@PrimaryKeyJoinColumn(name = "idObra")
 public class Livro extends ObraFisica {
 
+    @Column( nullable = false)
     private String autor;
 
+    @Column( nullable = false)
     private String isbn;
 
     public Livro() {
