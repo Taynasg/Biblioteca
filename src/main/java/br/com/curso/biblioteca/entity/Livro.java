@@ -8,11 +8,16 @@ import java.util.Date;
 @Table(name = "TB_EXEMPLAR_LIVRO")
 @PrimaryKeyJoinColumn(name = "idObra")
 public class Livro extends ObraFisica {
+    @Override
+    @Column(nullable = false)
+    public String getCodLocalizacao() {
+        return super.getCodLocalizacao();
+    }
 
     @Column( nullable = false)
     private String autor;
 
-    @Column( nullable = false)
+    @Column( nullable = true)
     private String isbn;
 
     public Livro() {
@@ -32,5 +37,11 @@ public class Livro extends ObraFisica {
     public String getIsbn() {
         return isbn;
     }
+    @Override
+    public String toString() {
+        return "Livro [id=" + id + ", titulo=" + titulo + ", dataPublicacao=" + dataPublicacao + ", codLocalizacao="
+                + codLocalizacao + ", autor=" + autor + ", isbn=" + isbn + "]";
+    }
+
 
 }

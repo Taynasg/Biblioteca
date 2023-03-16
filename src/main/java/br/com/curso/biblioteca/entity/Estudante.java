@@ -9,19 +9,26 @@ import jakarta.persistence.Table;
 @Table(name = "TB_ESTUDANTE")
 @PrimaryKeyJoinColumn(name = "idUsuario")
 public class Estudante extends Usuario {
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String matricula;
 
-    Estudante(Long id,String nome,String rg,String email ,String matricula){
-        super(id,nome,rg,email);
+    public Estudante(Long id, String nome, String rg, String email, String matricula) {
+        super(id, nome, rg, email);
         this.matricula = matricula;
     }
 
-    Estudante(){
+    public Estudante() {
 
     }
 
     public String getMatricula() {
         return matricula;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudante [id=" + id + ", nome=" + nome + ", rg=" + rg + ", email=" + email + ", matricula=" + matricula
+                + "]";
+
     }
 }

@@ -13,11 +13,11 @@ public class Professor extends Usuario {
     @Column( nullable = false)
     private String titulacao;
 
-    Professor() {
+   public Professor() {
     }
 
 
-    Professor(Long id,String nome,String rg,String email,String titulacao) {
+    public Professor(Long id,String nome,String rg,String email,String titulacao) {
         super(id,nome,rg,email);
         this.titulacao = titulacao;
     }
@@ -25,5 +25,12 @@ public class Professor extends Usuario {
     public String getTitulacao() {
         return titulacao;
     }
+
+    @Override
+    public String toString() {
+        return "Professor [id=" + id + ", nome=" + nome + ", rg=" + rg + ", email=" + email + ", titulacao=" + titulacao
+                + "]";
+    }
+
 
 }

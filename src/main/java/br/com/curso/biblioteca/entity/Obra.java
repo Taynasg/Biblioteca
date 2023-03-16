@@ -1,8 +1,6 @@
 package br.com.curso.biblioteca.entity;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
-
 import java.util.Date;
 
 @Entity
@@ -13,8 +11,10 @@ public abstract class Obra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+
     @Column( nullable = false)
     protected String titulo;
+
     @Column( nullable = false)
     protected Date dataPublicacao;
 
@@ -22,7 +22,6 @@ public abstract class Obra {
     //pois a obra em tese não precisa conhecre o emprestimo dela
     //@OneToOne(mappedBy = "obra")
 
-    protected Emprestimo emprestimo;
     public Obra() {
 
     }

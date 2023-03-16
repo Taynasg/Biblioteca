@@ -7,28 +7,30 @@ import java.util.List;
 @Entity
 @Table(name = "TB_USUARIO")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario {
+public abstract class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column( nullable = false)
     protected Long id;
-    @Column( nullable = false)
+
+    @Column(nullable = false)
     protected String nome;
-    @Column( nullable = false)
+
+    @Column(nullable = false)
     protected String rg;
-    @Column( nullable = false)
+
+    @Column(nullable = false)
     protected String email;
+
 
     @OneToMany(mappedBy = "usuario")
     protected List<Emprestimo> emprestimos;
 
-    public Usuario(){
+    public Usuario() {
 
     }
 
-    public Usuario(Long id, String nome, String rg, String email){
+    public Usuario(Long id, String nome, String rg, String email) {
         this.id = id;
         this.nome = nome;
         this.rg = rg;

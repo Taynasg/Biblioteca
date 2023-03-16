@@ -9,29 +9,30 @@ public class Emprestimo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "idUsuario", referencedColumnName = "id")
+    private Usuario usuario;
 
     @OneToOne
     @JoinColumn(name = "idObra", referencedColumnName = "id")
     private Obra obra;
 
-   @ManyToOne
-   @JoinColumn(name = "idUsuario", referencedColumnName = "id")
-    private Usuario usuario;
-    Emprestimo() {
+    @Column(nullable = false)
+    private Date data;
+
+    public Emprestimo() {
     }
 
-    Emprestimo(Long id, Date date){
+   public Emprestimo(Long id, Date date){
         this.id = id;
-        this.date = date;
+        this.data = data;
     }
     public Long getId() {
         return id;
     }
 
     public Date getDate() {
-        return date;
+        return data;
     }
 }
