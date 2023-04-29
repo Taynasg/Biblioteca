@@ -60,5 +60,5 @@
                 <version>${parent.version}</version>
             </plugin>
         </plugins>
-    </build>z
+    </build>
 </project>

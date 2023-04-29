@@ -22,7 +22,7 @@ public abstract class Obra {
     //pois a obra em tese não precisa conhecre o emprestimo dela
     //@OneToOne(mappedBy = "obra")
 
-    protected Emprestimo emprestimo;
+   // protected Emprestimo emprestimo;
     public Obra() {
 
     }

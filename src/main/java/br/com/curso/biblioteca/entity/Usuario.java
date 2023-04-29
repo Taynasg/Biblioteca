@@ -6,6 +6,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "TB_USUARIO")
+@PrimaryKeyJoinColumn(name = "idUsuario")
+@NamedQueries({
+        @NamedQuery(name = "buscaUsuariosPorNomeouRg" ,query = "SELECT u FROM Usuario u WHERE u.nome = :nome OR u.rg = :rg"),
+        @NamedQuery(name = "buscaUsuarioPorOrdemAlfabetica", query = "SELECT u FROM Usuario u ORDER BY u.nome ASC"),
+        @NamedQuery(name = "buscaUsuarioPorOrdemDeId", query = "SELECT u FROM Usuario u ORDER BY u.id"),
+        @NamedQuery(name = "buscaObrasEmprestadasParaUsuario", query = "SELECT o FROM Obra o WHERE o.usuario = :usuario"),
+})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
@@ -21,8 +28,8 @@ public class Usuario {
     @Column( nullable = false)
     protected String email;
 
-    @OneToMany(mappedBy = "usuario")
-    protected List<Emprestimo> emprestimos;
+    //@OneToMany(mappedBy = "usuario")
+    //protected List<Emprestimo> emprestimos;
 
     public Usuario(){
 

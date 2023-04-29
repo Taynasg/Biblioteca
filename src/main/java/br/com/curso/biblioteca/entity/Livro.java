@@ -1,18 +1,41 @@
 package br.com.curso.biblioteca.entity;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.NamedNativeQueries;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB_EXEMPLAR_LIVRO")
 @PrimaryKeyJoinColumn(name = "idObra")
+@NamedQueries({
+        @NamedQuery(name = "buscaTodosOrdenadosTitulo", query = "FROM Livro ORDER BY titulo"),
+        @NamedQuery(name = "buscaTodosOrdenadosAutor", query = "FROM Livro ORDER BY autor")
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "buscaMaisAntigo", query = "SELECT \r\n"
+                + " o.titulo \r\n"
+                + "FROM \r\n"
+                + " biblioteca.tb_exemplar_livro l,\r\n"
+                + " biblioteca.tb_exemplar_obra o\r\n"
+                + "WHERE\r\n"
+                + " l.id_obra = o.id\r\n"
+                + "ORDER BY\r\n"
+                + " o.data_publicacao\r\n"
+                + "LIMIT 1")
+})
 public class Livro extends ObraFisica {
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String autor;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String isbn;
 
     public Livro() {
@@ -22,7 +45,6 @@ public class Livro extends ObraFisica {
         super(id, titulo, dataPublicacao, codLocalizacao);
         this.autor = autor;
         this.isbn = isbn;
-
     }
 
     public String getAutor() {
@@ -31,6 +53,12 @@ public class Livro extends ObraFisica {
 
     public String getIsbn() {
         return isbn;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro [id=" + id + ", titulo=" + titulo + ", dataPublicacao=" + dataPublicacao + ", codLocalizacao="
+                + codLocalizacao + ", autor=" + autor + ", isbn=" + isbn + "]";
     }
 
 }
